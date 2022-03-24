@@ -1,0 +1,199 @@
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { font-size: 10px }
+
+body {
+  padding: 5rem 5rem;
+  font-size: 1.6rem;
+}
+
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    color: #333;
+    font-size: 1.5rem;
+  }
+    
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* when hover over the button, style applies to the ::after */
+    &::after {
+      transform: scale(1.2, 1.4);
+      opacity: 0;
+    }
+  }
+    
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  }
+    
+  &--white {
+    background-color: #fff;
+    color: #3333;
+    &::after {
+      background-color: #fff;
+    }
+  }
+}
+
+.card {
+  height: 53rem;
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  
+  &__side {
+    height: 100%;
+    transition: all .5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .15);
+    
+    &--front {
+      // background-color: orange;
+    }
+    
+    &--back {
+      transform: rotateY(180deg);
+      
+      &-1 {
+        background: #3A1C71;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      &-2 {
+        background: #F2994A;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      &-3 {
+        background: #007991;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #78ffd6, #007991);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #78ffd6, #007991); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+    }
+  }
+  
+  &:hover &__side--front {
+      transform: rotateY(-180deg);
+    }
+  
+  &:hover &__side--back {
+      transform: rotateY(0);
+    }
+  
+  &__picture {
+    height: 45%;
+    background-size: cover;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    
+    &-1 {
+      background-image: linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71), url("https://media.timeout.com/images/105770171/image.jpg");
+    }
+    
+    &-2 {
+      background-image: linear-gradient(to right, #F2C94C, #F2994A), url("https://i.ibb.co/LpnXkLc/hiking.jpg");
+    }
+    
+    &-3 {
+      background-image: linear-gradient(to right, #78ffd6, #007991), url("https://i.ibb.co/CzMpmNq/sebastian-pena-lambarri-44r12-Ck-Co-I-unsplash-3.jpg");
+    }
+  }
+  
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    font-family: Lato;
+    text-transform: uppercase;
+    color: #fff;
+    position: absolute;
+    top: 15rem;
+    left: 10rem;
+    text-align: right;
+    width: 60%;
+    line-height: 1.5;
+  }
+  
+  &__heading-span {
+    padding: 1rem 1.2rem;
+    -webkit-box-decoration-break: clone;
+    
+    &-1 {
+      background: linear-gradient(to right bottom, rgba(#FFAF7B, .85), rgba(#D76D77, .85));
+    }
+    
+    &-2 {
+      background: linear-gradient(to right bottom, rgba(#F2C94C, .85), rgba(#F2994A, .85));
+    }
+    
+    &-3 {
+      background: linear-gradient(to right bottom, rgba(#78ffd6, .85), rgba(#007991, .85));
+    }
+  }
+  
+  &__details {
+    padding: 4rem 3rem 3rem 3rem;
+    
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+      
+      li {
+        padding: 0.8rem;
+        text-align: center;
+        font-size: 1.5rem;
+        
+        &:not(:last-child) {
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  }
+  
+//   back side styling
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+  }
+  
+  &__price-box {
+    margin-bottom: 6rem;
+    color: #fff;
+  }
+  
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+  
+  &__price-value {
+    font-size: 6.5rem;
+    font-weight: 100;
+  }
+}
